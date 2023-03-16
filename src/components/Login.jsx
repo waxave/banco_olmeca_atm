@@ -12,6 +12,7 @@ export default function Login() {
 
   const handleLoginSubmit = (event) => {
     event.preventDefault()
+    console.log('eiii')
   }
 
   useEffect(() => {
