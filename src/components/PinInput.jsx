@@ -3,7 +3,7 @@ import { Eye } from "./Icons";
 
 const CLEAN_SPACES_PIN = '        '
 
-export default function PinInput({cardPin, setCardPin, pinRef}) {
+export default function PinInput({cardPin, setCardPin, pinInputRef}) {
   const [pinVisible, setPinVisible] = useState(false)
 
   const handleChangeCardPin = (event) => {
@@ -38,7 +38,7 @@ export default function PinInput({cardPin, setCardPin, pinRef}) {
       relative text-[#302D88] bg-white border border-[#302D88]
       border-8 border px-4 py-4 text-2xl text-center readonly disabled
       focus:outline-none hover:outline-none' value={pinInputDisplay()}
-      onKeyDown={handleChangeCardPin} ref={pinRef} />
+      onKeyDown={handleChangeCardPin} ref={pinInputRef} onChange={handleChangeCardPin} />
       <button className='flex items-center rounded-r-lg text-[#ffffff] bg-[#302D88] border
       border-[#302D88] border-t-8 border-b-8 border-r-8 px-4 py-4 text-2xl indent-4'
       onClick={() => setPinVisible(!pinVisible)}>

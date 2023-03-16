@@ -3,8 +3,6 @@ import { useState } from "react"
 const CLEAN_SPACES_CARD = '   '
 
 export default function CardInput({cardNumber, setCardNumber}) {
-  // const [cardNumberDisplay, setCardNumberDisplay] = useState(cardNumber)
-
   const handleChangeCardNumber = (event) => {
     const newCardNumber = cardNumber
     if(event.keyCode === 8) {
@@ -38,7 +36,7 @@ export default function CardInput({cardNumber, setCardNumber}) {
       border-8 border px-4 py-4 text-2xl rounded-r-lg ring-gray-300
       focus:outline-none hover:outline-none text-center"
       placeholder="1111-2222-3333-4444" value={cardNumberDisplay()}
-      onKeyDown={handleChangeCardNumber}/>
+      onKeyDown={handleChangeCardNumber} onChange={handleChangeCardNumber} />
     </div>
   )
 }

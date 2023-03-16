@@ -8,19 +8,14 @@ import cardMock from "../mocks/card.json";
 export default function Login() {
   const [cardNumber, setCardNumber] = useState('7391394654253844')
   const [cardPin, setCardPin] = useState('8969')
-  const pinRef = createRef()
+  const pinInputRef = createRef()
 
   const handleLoginSubmit = (event) => {
     event.preventDefault()
-    console.log('form submited')
-  }
-
-  const handlePinChanged = (event) => {
-    console.log(event.key)
   }
 
   useEffect(() => {
-    pinRef.current.focus()
+    pinInputRef.current.focus()
   }, [])
 
   return (
@@ -32,9 +27,9 @@ export default function Login() {
             Banco Olmeca
           </h2>
         </div>
-        <form className='mt-8 space-y-6' onSubmit={handleLoginSubmit} onKeyDown={handlePinChanged}>
+        <form className='mt-8 space-y-6' onSubmit={handleLoginSubmit} >
           <CardInput cardNumber={cardNumber} setCardNumber={setCardNumber} />
-          <PinInput cardPin={cardPin} setCardPin={setCardPin} pinRef={pinRef} />
+          <PinInput cardPin={cardPin} setCardPin={setCardPin} pinInputRef={pinInputRef} />
           <PinPad setCardPin={setCardPin}/>
         </form>
       </div>
