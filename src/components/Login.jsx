@@ -6,7 +6,11 @@ import PinInput from './PinInput'
 import PinPad from './PinPad'
 
 export default function Login() {
-  const { authenticateCard } = useCard()
+  const { authenticateCard, pinInputRef } = useCard()
+
+  useEffect(() => {
+    pinInputRef.current.focus()
+  }, [])
 
   const handleLoginSubmit = (event) => {
     event.preventDefault()

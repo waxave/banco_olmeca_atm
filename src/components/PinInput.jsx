@@ -16,7 +16,7 @@ export default function PinInput() {
       px-4 py-4 text-2xl text-center readonly disabled
       focus:outline-none hover:outline-none' value={pinDisplay}
       onKeyDown={changeCardPin} ref={pinInputRef} onChange={changeCardPin} />
-      <button className='flex items-center rounded-r-lg text-[#ffffff] bg-[#302D88] border
+      <button type='button' className='flex items-center rounded-r-lg text-[#ffffff] bg-[#302D88] border
       border-[#302D88] border-t-8 border-b-8 border-r-8 px-4 py-4 text-2xl indent-4'
       onClick={() => setPinVisible(!pinVisible)}>
         <Eye />

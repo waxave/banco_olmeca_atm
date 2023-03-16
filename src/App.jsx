@@ -1,9 +1,17 @@
-import Login from './components/Login'
+import { Suspense, useEffect, lazy } from 'react'
 import { CardProvider } from './context/card'
+import { useCard } from './hooks/useCard'
+
+const Login = lazy(() => import('./components/Login'))
+const Logged = lazy(() => import('./components/Logged'))
 
 function App() {
+  const { hasValidCard } = useCard()
+
   return (
-    <Login />
+    <Suspense fallback={<div>Loading</div>}>
+      { hasValidCard ? <Logged /> : <Login /> }
+    </Suspense>
   )
 }
 

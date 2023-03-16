@@ -3,8 +3,9 @@ import { createContext, useState, createRef } from 'react'
 export const CardContext = createContext()
 
 export function CardProvider ({ children }) {
-  const [cardNumber, setCardNumber] = useState('7391394654253844')
-  const [cardPin, setCardPin] = useState('8969')
+  const [card, setCard] = useState(null)
+  const [cardNumber, setCardNumber] = useState('3368318879256599')
+  const [cardPin, setCardPin] = useState('9999')
   const pinInputRef = createRef()
 
   return (
@@ -13,7 +14,9 @@ export function CardProvider ({ children }) {
       setCardNumber,
       cardPin,
       setCardPin,
-      pinInputRef
+      pinInputRef,
+      card,
+      setCard
     }}
     >
       {children}
