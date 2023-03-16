@@ -1,12 +1,13 @@
-import { createRef, useEffect, useState } from 'react'
-import largeLogo from '../assets/logos/large.png'
-import { useCard } from '../hooks/useCard'
+import { useEffect } from 'react'
+import { useLogin } from '../hooks/useLogin'
+import Header from './Header'
 import CardInput from './CardInput'
 import PinInput from './PinInput'
 import PinPad from './PinPad'
+import Errors from './Errors'
 
 export default function Login() {
-  const { authenticateCard, pinInputRef } = useCard()
+  const { authenticateCard, pinInputRef } = useLogin()
 
   useEffect(() => {
     pinInputRef.current.focus()
@@ -21,13 +22,9 @@ export default function Login() {
   return (
     <div className='flex min-h-full items-center justify-center py-60 px-4 sm:px-6 lg:px-8'>
       <div className='w-full max-w-4xl space-y-8'>
-        <div>
-          <img className='mx-auto h-50 w-auto' src={largeLogo} alt='Banco Olmeca'/>
-          <h2 className='font-["Raleway"] mt-6 text-center text-4xl font-bold tracking-tight text-[#302D88]'>
-            Banco Olmeca
-          </h2>
-        </div>
+        <Header />
         <form className='mt-8 space-y-6' onSubmit={handleLoginSubmit} >
+          <Errors />
           <CardInput />
           <PinInput />
           <PinPad />

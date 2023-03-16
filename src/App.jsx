@@ -1,16 +1,17 @@
 import { Suspense, useEffect, lazy } from 'react'
+import Loading from './components/Loading'
 import { CardProvider } from './context/card'
-import { useCard } from './hooks/useCard'
+import { useLogin } from './hooks/useLogin'
 
 const Login = lazy(() => import('./components/Login'))
-const Logged = lazy(() => import('./components/Logged'))
+const Bank = lazy(() => import('./components/Bank'))
 
 function App() {
-  const { hasValidCard } = useCard()
+  const { hasValidCard } = useLogin()
 
   return (
-    <Suspense fallback={<div>Loading</div>}>
-      { hasValidCard ? <Logged /> : <Login /> }
+    <Suspense fallback={ <Loading /> }>
+      { hasValidCard ? <Bank /> : <Login /> }
     </Suspense>
   )
 }
