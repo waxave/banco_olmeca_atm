@@ -1,23 +1,18 @@
 import { createRef, useEffect, useState } from 'react'
 import largeLogo from '../assets/logos/large.png'
+import { useCard } from '../hooks/useCard'
 import CardInput from './CardInput'
 import PinInput from './PinInput'
 import PinPad from './PinPad'
-import cardMock from "../mocks/card.json";
 
 export default function Login() {
-  const [cardNumber, setCardNumber] = useState('7391394654253844')
-  const [cardPin, setCardPin] = useState('8969')
-  const pinInputRef = createRef()
+  const { authenticateCard } = useCard()
 
   const handleLoginSubmit = (event) => {
     event.preventDefault()
-    console.log('eiii')
-  }
 
-  useEffect(() => {
-    pinInputRef.current.focus()
-  }, [])
+    authenticateCard()
+  }
 
   return (
     <div className='flex min-h-full items-center justify-center py-60 px-4 sm:px-6 lg:px-8'>
@@ -29,9 +24,9 @@ export default function Login() {
           </h2>
         </div>
         <form className='mt-8 space-y-6' onSubmit={handleLoginSubmit} >
-          <CardInput cardNumber={cardNumber} setCardNumber={setCardNumber} />
-          <PinInput cardPin={cardPin} setCardPin={setCardPin} pinInputRef={pinInputRef} />
-          <PinPad setCardPin={setCardPin}/>
+          <CardInput />
+          <PinInput />
+          <PinPad />
         </form>
       </div>
     </div>
