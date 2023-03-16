@@ -42,6 +42,13 @@ npm run dev
 
 Live url: [Banco Olmeca](https://atm.waxave.cc/)
 
+
+## Login
+
+To use the app you can use any card number from [Banco Olmeca API](https://banco-olmeca.waxave.cc/api/cards)
+
+The PIN for all the cards is [9999]
+
 ## Login
 
 ![login to atm](./images/login.png)
