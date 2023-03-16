@@ -1,6 +1,6 @@
-export default function DepositButton() {
+export default function DepositButton({handleClick}) {
   return (
-    <button type='button'
+    <button onClick={() => handleClick()} type='button'
     className='font-["Roboto"] group relative flex w-full
     justify-center rounded-md bg-[#7E7BE4] py-5 px-5 text-md
     text-white hover:bg-[#302D88] focus-visible:outline

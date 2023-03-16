@@ -4,14 +4,14 @@ import { CardProvider } from './context/card'
 import { useLogin } from './hooks/useLogin'
 
 const Login = lazy(() => import('./components/Login'))
-const Bank = lazy(() => import('./components/Bank'))
+const Home = lazy(() => import('./components/Home'))
 
 function App() {
   const { hasValidCard } = useLogin()
 
   return (
     <Suspense fallback={ <Loading /> }>
-      { hasValidCard ? <Bank /> : <Login /> }
+      { hasValidCard ? <Home /> : <Login /> }
     </Suspense>
   )
 }
