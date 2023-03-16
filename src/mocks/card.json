@@ -1,0 +1,15 @@
+[
+  {
+    "id": 9,
+    "number": "7391394654253844",
+    "expiration_month": 2,
+    "expiration_year": 2028,
+    "balance": "258000.0",
+    "kind": "credit",
+    "status": "enabled",
+    "default": false,
+    "account_id": 3,
+    "created_at": "2023-03-15T01:45:06.184Z",
+    "updated_at": "2023-03-15T01:45:06.231Z"
+  }
+]
