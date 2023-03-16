@@ -9,6 +9,7 @@ import { useState, useCallback, useMemo, useEffect } from "react"
 import { cleanNumericInput } from '../utils'
 import Errors from './Errors'
 import Success from './Success'
+import LogoutButton from "./LogoutButton"
 
 export default function Deposit({setOperationType}) {
   const { card, balanceDisplayable, refreshCard } = useCard()
@@ -32,6 +33,7 @@ export default function Deposit({setOperationType}) {
         <AmountInput amount={amount} setAmount={setAmount} />
         <DepositButton handleClick={handleDeposit} />
         <CancelOperation setOperationType={setOperationType} />
+        <LogoutButton />
       </div>
     </div>
   )

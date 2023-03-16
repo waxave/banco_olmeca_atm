@@ -9,6 +9,7 @@ import { cleanNumericInput } from '../utils'
 import Errors from './Errors'
 import Success from './Success'
 import WithdrawalButton from "./WithdrawalButton"
+import LogoutButton from "./LogoutButton"
 
 export default function Withdrawal({setOperationType}) {
   const { card, balanceDisplayable, refreshCard } = useCard()
@@ -32,6 +33,7 @@ export default function Withdrawal({setOperationType}) {
         <AmountInput amount={amount} setAmount={setAmount} />
         <WithdrawalButton handleClick={handleWithdrawal} />
         <CancelOperation setOperationType={setOperationType} />
+        <LogoutButton />
       </div>
     </div>
   )

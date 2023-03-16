@@ -4,8 +4,8 @@ export const CardContext = createContext()
 
 export function CardProvider ({ children }) {
   const [card, setCard] = useState(null)
-  const [cardNumber, setCardNumber] = useState('3368318879256599')
-  const [cardPin, setCardPin] = useState('9999')
+  const [cardNumber, setCardNumber] = useState('')
+  const [cardPin, setCardPin] = useState('')
   const [errors, setErrors] = useState(null)
   const [operation, setOperation] = useState(null)
 

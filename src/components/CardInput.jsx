@@ -1,4 +1,5 @@
 import { useLogin } from "../hooks/useLogin"
+import { CARD_PLACEHOLDER } from '../constants'
 
 export default function CardInput() {
   const { changeCardNumber, cardNumberDisplay } = useLogin()
@@ -13,7 +14,8 @@ export default function CardInput() {
       relative text-[#302D88] bg-white border-[#302D88]
       border-8 px-4 py-4 text-2xl rounded-r-lg ring-gray-300
       focus:outline-none hover:outline-none text-center"
-      placeholder="1111-2222-3333-4444" value={cardNumberDisplay}
+      placeholder={CARD_PLACEHOLDER}
+      value={cardNumberDisplay}
       onKeyDown={changeCardNumber} onChange={changeCardNumber} />
     </div>
   )

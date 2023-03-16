@@ -49,9 +49,9 @@ export function useLogin () {
 
   const cardNumberDisplay = useMemo(() => {
     const newCardNumber = cardNumber
-    const cardToDisplay = newCardNumber.match(/(.{1,4})/g)?.join('-')
+    const cardToDisplay = newCardNumber?.match(/(.{1,4})/g)?.join('-')
 
-    return newCardNumber.length > 0 ? cardToDisplay.match(/(.{1,1})/g).join(CLEAN_SPACES_CARD) : ''
+    return newCardNumber.length > 0 ? cardToDisplay?.match(/(.{1,1})/g)?.join(CLEAN_SPACES_CARD) : ''
   }, [cardNumber])
 
   const hasValidCard = useMemo(() => {

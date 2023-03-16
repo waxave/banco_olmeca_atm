@@ -39,6 +39,11 @@ export function useOperation () {
       })
   }, [amount])
 
+  const clearOperation = useCallback(() => {
+    setOperation(null)
+    setErrors(null)
+  }, [])
+
   const amountDisplayable = useMemo(() => {
     return formatMoney(operation?.amount)
   }, [operation])
@@ -50,7 +55,8 @@ export function useOperation () {
     createWithdrawal,
     errors,
     operation,
-    amountDisplayable
+    amountDisplayable,
+    clearOperation
   }
 }
 

@@ -7,7 +7,7 @@ const Deposit = lazy(() => import('./Deposit'))
 const Withdrawal = lazy(() => import('./Withdrawal'))
 
 export default function Home() {
-  const [operationType, setOperationType] = useState(BANK_ACTIONS.DEPOSIT)
+  const [operationType, setOperationType] = useState(BANK_ACTIONS.BANK)
 
   const RENDER_BY_ACTION = {
     [BANK_ACTIONS.BANK]: () => {

@@ -3,6 +3,7 @@ import Header from "./Header"
 import BalanceInput from "./BalanceInput"
 import DepositButton from "./DepositButton"
 import WithdrawalButton from "./WithdrawalButton"
+import LogoutButton from "./LogoutButton"
 import { useCallback, useEffect, useState } from "react"
 import { BANK_ACTIONS } from '../constants'
 import { useOperation } from "../hooks/useOperation"
@@ -25,6 +26,7 @@ export default function Bank({setOperationType}) {
         <BalanceInput />
         <DepositButton handleClick={handleDeposit} />
         <WithdrawalButton handleClick={handleWithdrawal} />
+        <LogoutButton />
       </div>
     </div>
   )

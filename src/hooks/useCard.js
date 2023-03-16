@@ -22,6 +22,11 @@ export function useCard () {
       })
   }, [operation])
 
+  const clearCard = useCallback(() => {
+    setCard(null)
+    setErrors(null)
+  }, [])
+
 
   const balanceDisplayable = useMemo(() => {
     return formatMoney(card.balance)
@@ -30,7 +35,8 @@ export function useCard () {
   return {
     card,
     balanceDisplayable,
-    refreshCard
+    refreshCard,
+    clearCard
   }
 }
 
