@@ -31,7 +31,7 @@ export function usePinPad () {
     const newPin = cardPin
     const pinToDisplay = pinVisible ? newPin : newPin?.replace(/[0-9]/g, '*')
 
-    return newPin.length > 0 ? pinToDisplay?.match(/(.{1,1})/g)?.join(CLEAN_SPACES_PIN) : ''
+    return newPin?.length > 0 ? pinToDisplay?.match(/(.{1,1})/g)?.join(CLEAN_SPACES_PIN) : ''
   }, [cardPin, pinVisible])
 
   const digitPressed = (digit) => {

@@ -1,8 +1,11 @@
 import { BANK_ACTIONS } from "../constants"
+import { useOperation } from "../hooks/useOperation"
 
 export default function CancelOperation({setOperationType}) {
+  const { clearOperation } = useOperation()
 
   const handleCancel = () => {
+    clearOperation()
     setOperationType(BANK_ACTIONS.BANK)
   }
 

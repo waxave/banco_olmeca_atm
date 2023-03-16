@@ -1,13 +1,16 @@
 import { BANK_ACTIONS } from "../constants"
 import { useCard } from "../hooks/useCard"
+import { useLogin } from "../hooks/useLogin"
 import { useOperation } from "../hooks/useOperation"
 
 export default function LogoutButton() {
   const { clearCard } = useCard()
+  const { clearLogin } = useLogin()
   const { clearOperation } = useOperation()
 
   const handleLogout = () => {
     clearOperation()
+    clearLogin()
     clearCard()
   }
 
