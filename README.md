@@ -1,4 +1,4 @@
-# Banco Olmeca App
+# Banco Olmeca ATM App
 Application that simulates a small bank ATM
 
 # Installation
