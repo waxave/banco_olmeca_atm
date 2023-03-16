@@ -27,6 +27,18 @@ export function useOperation () {
       })
   }, [amount])
 
+  const createWithdrawal = useCallback(() => {
+    const kind = OPERATIONS.WITHDRAWAL
+    createOperation({card, amount, kind})
+      .then(operation => {
+        setOperation(operation)
+        setErrors(null)
+      })
+      .catch(error => {
+        setErrors(error.message)
+      })
+  }, [amount])
+
   const amountDisplayable = useMemo(() => {
     return formatMoney(operation?.amount)
   }, [operation])
@@ -35,6 +47,7 @@ export function useOperation () {
     amount,
     setAmount,
     createDeposit,
+    createWithdrawal,
     errors,
     operation,
     amountDisplayable

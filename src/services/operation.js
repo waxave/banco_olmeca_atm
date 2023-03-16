@@ -27,6 +27,7 @@ export function createOperation ({card, amount, kind}) {
     }).then(response => response.json())
     .then(json => {
       if (json.error) throw new Error(json.error)
+      if (json.withdrawal_error) throw new Error(json.withdrawal_error)
 
       return operationMapper(json)
     })

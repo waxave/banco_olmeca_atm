@@ -12,7 +12,6 @@ export function useCard () {
   } = useContext(CardContext)
 
   const refreshCard = useCallback(() => {
-    console.log('refetch card')
     fetchCard(card.id)
       .then(card => {
         setCard(card)
