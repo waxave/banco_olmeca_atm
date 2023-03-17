@@ -1,4 +1,4 @@
-import { Suspense, useEffect, lazy, useState } from 'react'
+import { Suspense, lazy, useState } from 'react'
 import Loading from './Loading'
 import { BANK_ACTIONS } from '../constants'
 
@@ -6,7 +6,7 @@ const Bank = lazy(() => import('./Bank'))
 const Deposit = lazy(() => import('./Deposit'))
 const Withdrawal = lazy(() => import('./Withdrawal'))
 
-export default function Home() {
+export default function Home () {
   const [operationType, setOperationType] = useState(BANK_ACTIONS.BANK)
 
   const RENDER_BY_ACTION = {
@@ -27,7 +27,7 @@ export default function Home() {
   }
 
   return (
-    <Suspense fallback={ <Loading /> }>
+    <Suspense fallback={<Loading />}>
       {
         renderOperation()
       }

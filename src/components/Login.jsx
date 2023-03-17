@@ -6,7 +6,7 @@ import PinInput from './PinInput'
 import PinPad from './PinPad'
 import Errors from './Errors'
 
-export default function Login() {
+export default function Login () {
   const { authenticateCard, pinInputRef } = useLogin()
 
   useEffect(() => {
@@ -20,10 +20,10 @@ export default function Login() {
   }
 
   return (
-    <div className='flex min-h-full items-center justify-center py-60 px-4 sm:px-6 lg:px-8'>
+    <div className='flex min-h-full items-center justify-center px-4 sm:px-6 lg:px-8 py-10'>
       <div className='w-full max-w-4xl space-y-8'>
         <Header />
-        <form className='mt-8 space-y-6' onSubmit={handleLoginSubmit} >
+        <form className='mt-8 space-y-6' onSubmit={handleLoginSubmit}>
           <Errors />
           <CardInput />
           <PinInput />

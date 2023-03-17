@@ -1,16 +1,11 @@
-import { useCard } from "../hooks/useCard"
-import Header from "./Header"
-import BalanceInput from "./BalanceInput"
-import DepositButton from "./DepositButton"
-import WithdrawalButton from "./WithdrawalButton"
-import LogoutButton from "./LogoutButton"
-import { useCallback, useEffect, useState } from "react"
+import Header from './Header'
+import BalanceInput from './BalanceInput'
+import DepositButton from './DepositButton'
+import WithdrawalButton from './WithdrawalButton'
+import LogoutButton from './LogoutButton'
 import { BANK_ACTIONS } from '../constants'
-import { useOperation } from "../hooks/useOperation"
 
-export default function Bank({setOperationType}) {
-  const { card, balanceDisplayable, refreshCard } = useCard()
-
+export default function Bank ({ setOperationType }) {
   const handleDeposit = () => {
     setOperationType(BANK_ACTIONS.DEPOSIT)
   }

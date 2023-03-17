@@ -1,16 +1,16 @@
 
-import DigitButton from "./DigitButton"
-import EnterButton from "./EnterButton"
-import ClearButton from "./ClearButton"
-import DeleteButton from "./DeleteButton"
-import { usePinPad } from "../hooks/usePinPad"
+import DigitButton from './DigitButton'
+import EnterButton from './EnterButton'
+import ClearButton from './ClearButton'
+import DeleteButton from './DeleteButton'
+import { usePinPad } from '../hooks/usePinPad'
 
-const DIGITS = [1,2,3,4,5,6,7,8,9,0]
+const DIGITS = [1, 2, 3, 4, 5, 6, 7, 8, 9, 0]
 
-export default function PinPad() {
-  const { digitPressed,  clearPressed, deletePressed } = usePinPad()
+export default function PinPad () {
+  const { digitPressed, clearPressed, deletePressed } = usePinPad()
 
-  return(
+  return (
     <div className='grid grid-cols-4 gap-4'>
       {
         DIGITS.map(digit => {
