@@ -17,7 +17,7 @@ export function useOperation () {
 
   const createDeposit = useCallback(() => {
     const kind = OPERATIONS.DEPOSIT
-    createOperation({card, amount, kind})
+    createOperation({ card, amount, kind })
       .then(operation => {
         setOperation(operation)
         setErrors(null)
@@ -29,7 +29,7 @@ export function useOperation () {
 
   const createWithdrawal = useCallback(() => {
     const kind = OPERATIONS.WITHDRAWAL
-    createOperation({card, amount, kind})
+    createOperation({ card, amount, kind })
       .then(operation => {
         setOperation(operation)
         setErrors(null)
@@ -59,5 +59,3 @@ export function useOperation () {
     clearOperation
   }
 }
-
-

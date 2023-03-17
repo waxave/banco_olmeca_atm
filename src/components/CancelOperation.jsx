@@ -20,7 +20,7 @@ export default function CancelOperation ({ setOperationType }) {
       sm:py-4 lg:py-4 xl:py-6 sm:text-2xl
       sm:px-4 lg:px-4 xl:px-6 xl:text-4xl'
     >
-      Cancel
+      Back to menu
     </button>
   )
 }

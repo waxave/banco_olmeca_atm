@@ -18,7 +18,7 @@ export function usePinPad () {
   const changeCardPin = useCallback((event) => {
     const newPin = cardPin
 
-    if(event.keyCode === 8) {
+    if (event.keyCode === 8) {
       return setCardPin(cleanCardPin(newPin.slice(0, -1)))
     }
 
@@ -59,5 +59,3 @@ export function usePinPad () {
     setPinVisible
   }
 }
-
-

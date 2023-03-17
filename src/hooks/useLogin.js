@@ -20,14 +20,14 @@ export function useLogin () {
     return card.replace(/-/g, '').replace(/[^0-9]/g, '')
   }
 
-  const changeCardNumber = useCallback((event)=> {
+  const changeCardNumber = useCallback((event) => {
     const newCardNumber = cardNumber
 
     if (event.target.value.length === 16) {
       return setCardNumber(cleanCardNumber(event.target.value))
     }
 
-    if(event.keyCode === 8) {
+    if (event.keyCode === 8) {
       return setCardNumber(cleanCardNumber(newCardNumber.slice(0, -1)))
     }
 
@@ -37,7 +37,9 @@ export function useLogin () {
   }, [cardNumber])
 
   const authenticateCard = useCallback(() => {
-    authCard({cardNumber, cardPin})
+    if (cardNumber.length < 16 || cardPin.length < 4) return
+
+    authCard({ cardNumber, cardPin })
       .then(card => {
         setCard(card)
         setErrors(null)
@@ -48,8 +50,8 @@ export function useLogin () {
   }, [cardNumber, cardPin])
 
   const clearLogin = useCallback(() => {
-    setCardNumber(null)
-    setCardPin(null)
+    setCardNumber('')
+    setCardPin('')
   }, [])
 
   const cardNumberDisplay = useMemo(() => {
@@ -76,5 +78,3 @@ export function useLogin () {
     clearLogin
   }
 }
-
-
