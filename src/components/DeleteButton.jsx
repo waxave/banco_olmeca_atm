@@ -2,6 +2,7 @@ export default function DeleteButton ({ handleDeletePressed }) {
   return (
     <div className='col-span-1'>
       <button
+        id='delete-pin' data-testid='delete-pin'
         type='button' onClick={handleDeletePressed}
         className='font-["Roboto"] group relative flex w-full
       justify-center rounded-md bg-[#dc1111]

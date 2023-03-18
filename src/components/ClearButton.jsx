@@ -2,6 +2,7 @@ export default function ClearButton ({ handleClearPressed }) {
   return (
     <div className='col-span-1'>
       <button
+        id='clear-pin' data-testid='clear-pin'
         type='button' onClick={handleClearPressed}
         className='font-["Roboto"] group relative flex w-full
       justify-center rounded-md bg-[#f7df1e]

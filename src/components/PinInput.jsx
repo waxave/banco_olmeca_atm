@@ -17,7 +17,9 @@ export default function PinInput () {
         type='text' className='flex-shrink flex-grow max-w-full flex-1
       relative text-[#302D88] bg-white border-[#302D88]
       border-8 text-center readonly disabled focus:outline-none hover:outline-none
-      sm:px-2 sm:py-2 lg:px-4 lg:py-4 xl:px-6 xl:py-6 sm:text-lg lg:text-2xl' placeholder={PIN_PLACEHOLDER} value={pinDisplay}
+      sm:px-2 sm:py-2 lg:px-4 lg:py-4 xl:px-6 xl:py-6 sm:text-lg lg:text-2xl'
+        id='pin' data-testid='pin'
+        placeholder={PIN_PLACEHOLDER} value={pinDisplay}
         onKeyDown={changeCardPin} ref={pinInputRef} onChange={changeCardPin}
       />
       <button

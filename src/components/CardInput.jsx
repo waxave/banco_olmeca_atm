@@ -13,6 +13,7 @@ export default function CardInput () {
         CARD
       </span>
       <input
+        id='card' data-testid='card'
         type='text' className='flex-shrink flex-grow max-w-full flex-1
       relative text-[#302D88] bg-white border-[#302D88]
       border-8  rounded-r-lg ring-gray-300

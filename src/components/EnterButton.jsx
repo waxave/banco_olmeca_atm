@@ -2,6 +2,7 @@ export default function EnterButton () {
   return (
     <div className='col-span-1'>
       <button
+        id='enter-pin' data-testid='enter-pin'
         type='submit' className='font-["Roboto"] group relative
       flex w-full justify-center rounded-md bg-[#36ba59]
       text-[#06591d] hover:bg-[#01952b] focus-visible:outline
