@@ -1,4 +1,4 @@
-import { useCallback, useContext, useEffect, useMemo, useState } from 'react'
+import { useCallback, useContext, useMemo, useState } from 'react'
 import { CardContext } from '../context/card'
 import { CLEAN_SPACES_PIN } from '../constants'
 

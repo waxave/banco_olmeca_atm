@@ -2,23 +2,20 @@ import { useCallback, useContext, useMemo } from 'react'
 import { CardContext } from '../context/card'
 import { CLEAN_SPACES_CARD } from '../constants'
 import { authCard } from '../services/card'
+import { useError } from './useError'
+import { cleanCardNumber } from '../utils'
 
 export function useLogin () {
+  const { setError, clearErrors } = useError()
+
   const {
     cardNumber,
     setCardNumber,
     cardPin,
     setCardPin,
-    pinInputRef,
-    card,
     setCard,
-    errors,
-    setErrors
+    pinInputRef
   } = useContext(CardContext)
-
-  const cleanCardNumber = (card) => {
-    return card.replace(/-/g, '').replace(/[^0-9]/g, '')
-  }
 
   const changeCardNumber = useCallback((event) => {
     const newCardNumber = cardNumber
@@ -42,10 +39,10 @@ export function useLogin () {
     authCard({ cardNumber, cardPin })
       .then(card => {
         setCard(card)
-        setErrors(null)
+        clearErrors()
       })
       .catch(error => {
-        setErrors(error.message)
+        setError(error.message)
       })
   }, [cardNumber, cardPin])
 
@@ -61,20 +58,11 @@ export function useLogin () {
     return newCardNumber?.length > 0 ? cardToDisplay?.match(/(.{1,1})/g)?.join(CLEAN_SPACES_CARD) : ''
   }, [cardNumber])
 
-  const hasValidCard = useMemo(() => {
-    return card
-  }, [card])
-
   return {
     changeCardNumber,
     cardNumberDisplay,
-    cardPin,
-    setCardPin,
-    pinInputRef,
     authenticateCard,
-    card,
-    hasValidCard,
-    errors,
-    clearLogin
+    clearLogin,
+    pinInputRef
   }
 }

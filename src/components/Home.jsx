@@ -1,6 +1,7 @@
 import { Suspense, lazy, useState } from 'react'
 import Loading from './Loading'
 import { BANK_ACTIONS } from '../constants'
+import { OperationProvider } from '../context/operation'
 
 const Bank = lazy(() => import('./Bank'))
 const Deposit = lazy(() => import('./Deposit'))
@@ -27,10 +28,12 @@ export default function Home () {
   }
 
   return (
-    <Suspense fallback={<Loading />}>
-      {
-        renderOperation()
-      }
-    </Suspense>
+    <OperationProvider>
+      <Suspense fallback={<Loading />}>
+        {
+          renderOperation()
+        }
+      </Suspense>
+    </OperationProvider>
   )
 }

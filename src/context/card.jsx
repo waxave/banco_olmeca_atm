@@ -1,4 +1,5 @@
 import { createContext, useState, createRef } from 'react'
+import { MessageProvider } from './message'
 
 export const CardContext = createContext()
 
@@ -6,8 +7,6 @@ export function CardProvider ({ children }) {
   const [card, setCard] = useState(null)
   const [cardNumber, setCardNumber] = useState('')
   const [cardPin, setCardPin] = useState('')
-  const [errors, setErrors] = useState(null)
-  const [operation, setOperation] = useState(null)
 
   const pinInputRef = createRef()
 
@@ -19,11 +18,7 @@ export function CardProvider ({ children }) {
       setCardPin,
       pinInputRef,
       card,
-      setCard,
-      errors,
-      setErrors,
-      operation,
-      setOperation
+      setCard
     }}
     >
       {children}

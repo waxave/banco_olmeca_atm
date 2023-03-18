@@ -3,27 +3,37 @@ import { CardContext } from '../context/card'
 import { createOperation } from '../services/operation'
 import { OPERATIONS } from '../constants'
 import { formatMoney } from '../utils'
+import { OperationContext } from '../context/operation'
+import { useError } from './useError'
+import { useSuccess } from './useSuccess'
 
 export function useOperation () {
   const [amount, setAmount] = useState(null)
+  const { setError, clearErrors } = useError()
+  const { setSuccess, clearSuccess } = useSuccess()
 
   const {
-    card,
-    errors,
-    setErrors,
+    card
+  } = useContext(CardContext)
+
+  const {
     operation,
     setOperation
-  } = useContext(CardContext)
+  } = useContext(OperationContext)
 
   const createDeposit = useCallback(() => {
     const kind = OPERATIONS.DEPOSIT
     createOperation({ card, amount, kind })
       .then(operation => {
+        clearErrors()
+        clearSuccess()
+
         setOperation(operation)
-        setErrors(null)
+        setSuccess(`${operation.concept} of ${formatMoney(operation.amount)}`)
       })
       .catch(error => {
-        setErrors(error.message)
+        clearSuccess()
+        setError(error.message)
       })
   }, [amount])
 
@@ -31,17 +41,23 @@ export function useOperation () {
     const kind = OPERATIONS.WITHDRAWAL
     createOperation({ card, amount, kind })
       .then(operation => {
+        clearErrors()
+        clearSuccess()
+
         setOperation(operation)
-        setErrors(null)
+        setSuccess(`${operation.concept} of ${formatMoney(operation.amount)}`)
       })
       .catch(error => {
-        setErrors(error.message)
+        clearSuccess()
+        setError(error.message)
       })
   }, [amount])
 
   const clearOperation = useCallback(() => {
     setOperation(null)
-    setErrors(null)
+
+    clearErrors()
+    clearSuccess()
   }, [])
 
   const amountDisplayable = useMemo(() => {
@@ -53,7 +69,6 @@ export function useOperation () {
     setAmount,
     createDeposit,
     createWithdrawal,
-    errors,
     operation,
     amountDisplayable,
     clearOperation

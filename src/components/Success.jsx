@@ -1,16 +1,16 @@
-import { useOperation } from '../hooks/useOperation'
+import { useSuccess } from '../hooks/useSuccess'
 
 export default function Success () {
-  const { operation, errors, amountDisplayable } = useOperation()
+  const { hasSuccess, success } = useSuccess()
 
   return (
-    operation && !errors &&
+    hasSuccess &&
       (
         <div
           className='font-["Roboto"] bg-[#36ba59] border border-[#36ba59]
           text-[#06591d] px-8 py-5 rounded relative text-xl' role='alert'
         >
-          <strong class='font-bold'>{operation.concept} of {amountDisplayable}</strong>
+          <strong className='font-bold'>{success}</strong>
         </div>
       )
   )
