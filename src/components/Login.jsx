@@ -2,20 +2,18 @@ import { useEffect } from 'react'
 import { useLogin } from '../hooks/useLogin'
 import Header from './Header'
 import CardInput from './CardInput'
-import PinInput from './PinInput'
-import PinPad from './PinPad'
+import PinSection from './PinSection'
 import Errors from './Errors'
 
 export default function Login () {
-  const { authenticateCard, pinInputRef } = useLogin()
+  const { authenticateCard, pinInputRef, cardNumber } = useLogin()
 
   useEffect(() => {
-    pinInputRef.current.focus()
-  }, [])
+    if (cardNumber.length === 16) pinInputRef.current.focus()
+  }, [cardNumber])
 
   const handleLoginSubmit = (event) => {
     event.preventDefault()
-
     authenticateCard()
   }
 
@@ -26,8 +24,7 @@ export default function Login () {
         <form className='mt-8 space-y-6' onSubmit={handleLoginSubmit}>
           <Errors />
           <CardInput />
-          <PinInput />
-          <PinPad />
+          <PinSection />
         </form>
       </div>
     </div>

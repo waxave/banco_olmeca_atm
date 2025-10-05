@@ -4,53 +4,31 @@ import { CLEAN_SPACES_PIN } from '../constants'
 
 export function usePinPad () {
   const [pinVisible, setPinVisible] = useState(false)
-
-  const {
-    cardPin,
-    setCardPin,
-    pinInputRef
-  } = useContext(CardContext)
-
-  const cleanCardPin = (pin) => {
-    return pin.replace(/w/g, '').replace(/[^0-9]/g, '')
-  }
+  const { cardPin, setCardPin, pinInputRef } = useContext(CardContext)
 
   const changeCardPin = useCallback((event) => {
     const newPin = cardPin
-
-    if (event.target.value.length === 4) {
-      return setCardPin(cleanCardPin(event.target.value))
+    if (event.key === 'Backspace') {
+      setCardPin(newPin.slice(0, -1))
+      return
     }
-
-    if (event.keyCode === 8) {
-      return setCardPin(cleanCardPin(newPin.slice(0, -1)))
+    if (/^[0-9]$/.test(event.key) && newPin.length < 4) {
+      setCardPin(newPin + event.key)
     }
-
-    if (newPin.length === 4) return
-
-    setCardPin(cleanCardPin(newPin + event.key))
   }, [cardPin])
 
   const pinDisplay = useMemo(() => {
-    const newPin = cardPin
-    const pinToDisplay = pinVisible ? newPin : newPin?.replace(/[0-9]/g, '*')
-
-    return newPin?.length > 0 ? pinToDisplay?.match(/(.{1,1})/g)?.join(CLEAN_SPACES_PIN) : ''
+    const display = pinVisible ? cardPin : cardPin.replace(/[0-9]/g, '*')
+    return display?.split('').join(CLEAN_SPACES_PIN)
   }, [cardPin, pinVisible])
 
   const digitPressed = (digit) => {
-    setCardPin(prevState => (
-      prevState.length === 4 ? prevState : prevState + digit
-    ))
+    setCardPin(prev => (prev.length < 4 ? prev + digit : prev))
   }
 
-  const clearPressed = () => {
-    setCardPin('')
-  }
+  const clearPressed = () => setCardPin('')
 
-  const deletePressed = (digit) => {
-    setCardPin(prevState => prevState.slice(0, -1))
-  }
+  const deletePressed = () => setCardPin(prev => prev.slice(0, -1))
 
   return {
     changeCardPin,
